@@ -1,8 +1,8 @@
 <template>
     <div id="principal">
         <h1>Lista de Livros Cadastrados</h1>
-        <router-link to="/">Ir para o cadastro de livros<br><br></router-link>
-        <label style="font-size: 20px;" for="busca">Busca de livro(s)</label><input type="text" id="busca" v-model="textFragment" @keydown="buscarNaBiblioteca" placeholder="Digite o título, nome do autor, estado ou número de páginas"/>
+        <router-link to="/"><img src="../assets/cadastro.png" title="Ir para o cadastro"  width="30" alt="Cadastro da Biblioteca"/> Ir para o cadastro de livros<br><br></router-link>
+        <label style="font-size: 20px;" for="busca">Busca de livro(s)</label><input type="text" id="busca" v-model="textFragment" @keyup="buscarNaBiblioteca" placeholder="Digite o título, nome do autor, estado ou número de páginas"/>
         <table id="library">
             <tr>
                 <th class="other-cells">#</th>
@@ -28,6 +28,7 @@
 
 <script>
 import {http} from '../http-common'
+import { log } from 'util'
 
 export default {
     name: 'lista',
@@ -68,7 +69,7 @@ export default {
         },
 
         buscarNaBiblioteca(){
-            if(this.textFragment != ''){
+            if(this.textFragment.length > 0){
                 http.get('/api/library/livros/busca/'+this.textFragment) 
                     .then(response => {
                         this.livros = response.data

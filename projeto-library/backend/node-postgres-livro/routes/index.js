@@ -25,6 +25,10 @@ router.post('/api/library/livros', (req, res, next) => {
       return res.status(500).json({success: false, data: err});
     }
     
+    if(data.titulo.length < 2 || data.autor.length < 2 || (data.numeropaginas < 10 || data.numeropaginas > 5000) || data.titulo.length < 2 || data.titulo.length < 2){
+      return;
+    }
+
     client.query('INSERT INTO livro(titulo, autor, numeropaginas, estado, status) values($1, $2, $3, $4, $5)',
     [data.titulo, data.autor, data.numeropaginas, data.estado, data.status]);
     

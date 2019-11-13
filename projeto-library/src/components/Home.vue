@@ -4,15 +4,15 @@
                     Algum erro ocorreu!
         </section>
         <h1>A Biblioteca de Livros</h1>
-        <router-link to="/lista">Ir para a biblioteca</router-link>
-        <form>
+        <router-link to="/lista"><img src="../assets/lib.png" title="Ir para a biblioteca" width="30" alt="Lista da Biblioteca"/> Ir para a biblioteca</router-link>
+        
             <div class="form-intern-div">
                 <label for="title" title="Título do Livro"><b>Título:</b></label><br>
-                <input type="text" id="title" title="Título do Livro" v-model="livro.titulo" name="Titulo" maxlength="100" minlength="2" required><br>
+                <input type="text" id="title" title="Título do Livro" v-model="livro.titulo" name="Titulo" maxlength="50" minlength="2" required><br>
             </div>
             <div class="form-intern-div">
                 <label for="author" title="Autor do Livro"><b>Autor:</b></label><br>
-                <input type="text" id="author" title="Autor do Livro" v-model="livro.autor" name="Autor" @keypress="isLetterKey($event)"  maxlength="100" minlength="2" required/><br>
+                <input type="text" id="author" title="Autor do Livro" v-model="livro.autor" name="Autor" @keypress="isLetterKey($event)"  maxlength="50" minlength="2" required/><br>
             </div>
             <div class="form-intern-div">
                 <label for="pages" title="Número de Páginas do Livro"><b>Páginas:</b></label><br>
@@ -38,7 +38,7 @@
             <div class="form-intern-div">
                 <button id="submit" @click="submitActions">Cadastrar livro na biblioteca</button>
             </div>
-        </form>
+        
     </div>
 </template>
 
@@ -89,13 +89,13 @@ export default {
                 estado: this.livro.estado,
                 status: this.livro.status
             })
-                .then((reponse) => {})
+                .then((reponse) => {
+                    this.redirect()
+                })
                 .catch((e) => {
                     console.log('Erro ao editar: '+e)
                     this.isSomethingWrong = true
                 })
-
-                this.redirect()
         },
 
         // determina qual operacao ira ocorrer apos submeter o preenchimento do cadastro
