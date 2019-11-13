@@ -26,7 +26,7 @@ Aplicação simples feita com Vue.Js e Express.Js para persistir dados dos livro
   <h3>4) Instalar o Express.Js via npm:</h3>
     <ul>
       <li>npm install -g express-generator@4.13.4</li>
-      <li>cd projeto-library/backend/node</li>
+      <li>cd projeto-library/backend/node-postgres-livro</li>
       <li>npm install</li>
       <li>npm start</li>
     </ul>
